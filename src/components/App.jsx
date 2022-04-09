@@ -11,23 +11,29 @@ export class App extends Component {
     bad: 0
   }
 
+
+
   handleIncrement = e => {
     const option = e.target.textContent;
 
       this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
-  countTotalFeedback  ()  {
-// const { good, neutral, bad } = this.state;
-return this.state.good + this.state.neutral + this.state.bad;
-  }
+  countTotalFeedback = () => {
+    // const { good, neutral, bad } = this.state;
+    return Object.values(this.state).reduce((acc, value) => acc + value, 0)
+    
+      }
 
+  
   render(){
+
     const { good, neutral, bad  } = this.state;
     const handleIncrement = this.handleIncrement;
     const countTotalFeedback = this.countTotalFeedback;
     const options = Object.keys(this.state);
     // console.log(options);
+    
   return (
     <div>
     <Section title='Please, leave your feedback'>
