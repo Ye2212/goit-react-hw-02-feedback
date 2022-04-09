@@ -1,4 +1,7 @@
 import { Component } from 'react';
+import Section from './Section/Section';
+import FeedbackOptions from './FeedbackOptions/FeedbackOptions '
+import Statistics from './Statistics/Statistics';
 
 export class App extends Component {
 
@@ -8,55 +11,42 @@ export class App extends Component {
     bad: 0
   }
 
-  handleIncrementG = event => {
-    // console.log(event.target);
-    this.setState(prevState => {
-      return {
-        good: prevState.good +1,
-      }
-    })
-  }
-  handleIncrementN = event => {
-    this.setState(prevState => {
-      return {
-        neutral: prevState.neutral +1,
-      }
-    })
-  }
-  handleIncrementB = event => {
-    this.setState(prevState => {
-      return {
-        bad: prevState.bad +1,
-      }
-    })
+  handleIncrement = e => {
+    const option = e.target.textContent;
+
+      this.setState(prevState => ({ [option]: prevState[option] + 1 }));
+  };
+
+  countTotalFeedback  ()  {
+// const { good, neutral, bad } = this.state;
+return this.state.good + this.state.neutral + this.state.bad;
   }
 
   render(){
-const { good, neutral, bad } = this.state;
-return (
-    <section>
-      <h1>Please, leave your feedback</h1>
-      <ul>
-        <li>
-          <button type='button' onClick={this.handleIncrementG}>Good</button>
-        </li>
-        <li>
-          <button type='button' onClick={this.handleIncrementN}>Neutral</button>
-        </li>
-        <li>
-          <button type='button' onClick={this.handleIncrementB}>Bad</button>
-        </li>
-      </ul>
-      <div>
-      <h2>Statistics</h2>
-      <ul>
-        <li>Good: {good}</li>
-        <li>Neutral: {neutral} </li>
-        <li>Bad: {bad}</li>
-      </ul>
-      </div>
-    </section>
+    const { good, neutral, bad  } = this.state;
+    const handleIncrement = this.handleIncrement;
+    const countTotalFeedback = this.countTotalFeedback;
+    const options = Object.keys(this.state);
+    // console.log(options);
+  return (
+    <div>
+    <Section title='Please, leave your feedback'>
+      <FeedbackOptions 
+      options = { options }
+      onLeaveFeedback = { handleIncrement }
+      />
+      </Section>
+
+      <Section title='Statistics'>
+      <Statistics
+        good = { good }
+        neutral = { neutral }
+        bad = { bad }
+        total = { countTotalFeedback }
+        // positivePersentage = { positivePersentage }
+      />
+    </Section>
+    </div>
     );
   }
-
 };
