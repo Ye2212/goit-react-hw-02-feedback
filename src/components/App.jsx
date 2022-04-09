@@ -3,6 +3,7 @@ import Section from './Section/Section';
 import FeedbackOptions from './FeedbackOptions/FeedbackOptions '
 import Statistics from './Statistics/Statistics';
 
+
 export class App extends Component {
 
   state = {
@@ -11,12 +12,9 @@ export class App extends Component {
     bad: 0
   }
 
-
-
   handleIncrement = e => {
-    const option = e.target.textContent;
-
-      this.setState(prevState => ({ [option]: prevState[option] + 1 }));
+  const option = e.target.textContent;
+  this.setState(prevState => ({ [option]: prevState[option] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -25,16 +23,13 @@ export class App extends Component {
     return Object.values(this.state).reduce((acc, value) => acc + value, 0);
       }
 
-      countPositiveFeedbackPercentage = () => {
-        return Math.round((this.state.good / this.countTotalFeedback()) * 100)
+  countPositiveFeedbackPercentage = () => {
+    return Math.round((this.state.good / this.countTotalFeedback()) * 100)
       }
   
   render(){
 
     const { good, neutral, bad  } = this.state;
-    const handleIncrement = this.handleIncrement;
-    const countTotalFeedback = this.countTotalFeedback;
-
     const options = Object.keys(this.state);
     // console.log(options);
     
@@ -43,17 +38,16 @@ export class App extends Component {
     <Section title='Please, leave your feedback'>
       <FeedbackOptions 
       options = { options }
-      onLeaveFeedback = { handleIncrement }
+      onLeaveFeedback = { this.handleIncrement }
       />
       </Section>
 
       <Section title='Statistics'>
-        
       <Statistics
         good = { good }
         neutral = { neutral }
         bad = { bad }
-        total = { countTotalFeedback() }
+        total = { this.countTotalFeedback() }
         positivePersentage = { this.countPositiveFeedbackPercentage() }
       />
     </Section>

@@ -1,21 +1,20 @@
 import styled from "@emotion/styled";
 
 export const StatisticsList = styled.ul`
-display: flex;
 list-style: none;
-// flex-direction: column;
-justify-content: center;
+margin: 0;
+padding: 0;
 `;
 
 export const StatisticsItem = styled.li`
-margin:0 20px 0;
-font-size: 20px;
-// align-items: center;
 `;
 
 export const StatisticsText = styled.p`
-`
+font-size: 20px;
+`;
+
 export const StatisticValue = styled.span`
-font-size: 30px;
-font-weight: 700;
+font-size: 25px;
+font-weight: 500;
+color: blue;
 `;
