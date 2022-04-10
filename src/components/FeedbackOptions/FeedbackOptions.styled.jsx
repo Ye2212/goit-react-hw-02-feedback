@@ -24,6 +24,7 @@ transform: scale(1);
 transition: transform 500ms;
 &:hover {
     cursor: pointer;
-    transform: scale(0.97);
+    transform: scale(0.93);
+    background-color: #0000c4;
   }
 `;
