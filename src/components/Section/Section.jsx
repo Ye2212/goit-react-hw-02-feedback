@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import { StatisticSection } from "./Section.styled";
 
 class Section extends Component {
-    render (){
+    render() {
         const { title, children } = this.props;
         return (
             <StatisticSection>
@@ -14,9 +14,9 @@ class Section extends Component {
     }
 }
 
-StatisticSection.prototype = {
-title: propTypes.string,
-children: propTypes.element,
+StatisticSection.propTypes = {
+    title: propTypes.string,
+    children: propTypes.node,
 }
 
 export default Section;

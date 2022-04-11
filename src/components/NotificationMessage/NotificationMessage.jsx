@@ -1,11 +1,11 @@
 import { Message } from "./NotificationMessage.styled";
 import propTypes from 'prop-types';
 
-function NotificationMessage ( {message} ) {
+function NotificationMessage({ message }) {
     return <Message>{message}</Message>
 }
 
-NotificationMessage.prototype = {
+NotificationMessage.propTypes = {
     message: propTypes.string.isRequired,
 }
 export default NotificationMessage;
