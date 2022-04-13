@@ -1,25 +1,19 @@
 import propTypes from 'prop-types';
 import { StatisticsList, StatisticsItem, StatisticsText, StatisticValue } from './Statistics.styled';
-import NotificationMessage from 'components/NotificationMessage/NotificationMessage';
 
 const Statistics = ({ good, neutral, bad, total, positivePersentage, }) => {
   return (
     <>
-      {total > 0 ?
-        (<StatisticsList>
-          <StatisticsItem><StatisticsText>Good: <StatisticValue>{good}</StatisticValue></StatisticsText></StatisticsItem>
-          <StatisticsItem><StatisticsText>Neutral: <StatisticValue>{neutral}</StatisticValue></StatisticsText></StatisticsItem>
-          <StatisticsItem><StatisticsText>Bad: <StatisticValue>{bad}</StatisticValue></StatisticsText></StatisticsItem>
-          <StatisticsItem><StatisticsText>Total: <StatisticValue>{total}</StatisticValue></StatisticsText></StatisticsItem>
-          <StatisticsItem><StatisticsText>Positive Feedback: <StatisticValue>{positivePersentage}%</StatisticValue></StatisticsText></StatisticsItem>
-        </StatisticsList>
-        ) :
-        (<NotificationMessage message="There is no feedback" />)
-      }
-    </>
-
-  )
+      <StatisticsList>
+        <StatisticsItem><StatisticsText>Good: <StatisticValue>{good}</StatisticValue></StatisticsText></StatisticsItem>
+        <StatisticsItem><StatisticsText>Neutral: <StatisticValue>{neutral}</StatisticValue></StatisticsText></StatisticsItem>
+        <StatisticsItem><StatisticsText>Bad: <StatisticValue>{bad}</StatisticValue></StatisticsText></StatisticsItem>
+        <StatisticsItem><StatisticsText>Total: <StatisticValue>{total}</StatisticValue></StatisticsText></StatisticsItem>
+        <StatisticsItem><StatisticsText>Positive Feedback: <StatisticValue>{positivePersentage}%</StatisticValue></StatisticsText></StatisticsItem>
+      </StatisticsList>
+    </>)
 }
+
 
 Statistics.propTypes = {
   good: propTypes.number.isRequired,
